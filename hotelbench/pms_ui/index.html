@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HotelBench PMS - Property Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>🏨 HotelBench PMS</h1>
+            </div>
+            <div class="header-info">
+                <span class="date-display" id="current-date"></span>
+                <span class="user-display">Admin User</span>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="dashboard" data-testid="tab-dashboard">Dashboard</button>
+            <button class="tab-btn" data-tab="rooms" data-testid="tab-rooms">Rooms</button>
+            <button class="tab-btn" data-tab="requests" data-testid="tab-requests">Requests</button>
+            <button class="tab-btn" data-tab="guests" data-testid="tab-guests">Guest Profiles</button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Dashboard Tab -->
+            <section id="dashboard" class="tab-content active" data-testid="tab-content-dashboard">
+                <h2>Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Rooms</h3>
+                        <p class="stat-value" data-testid="dashboard-total-rooms">20</p>
+                    </div>
+                    <div class="stat-card occupied">
+                        <h3>Occupied</h3>
+                        <p class="stat-value" data-testid="dashboard-occupied">15</p>
+                    </div>
+                    <div class="stat-card vacant">
+                        <h3>Vacant</h3>
+                        <p class="stat-value" data-testid="dashboard-vacant">5</p>
+                    </div>
+                    <div class="stat-card dirty">
+                        <h3>Dirty</h3>
+                        <p class="stat-value" data-testid="dashboard-dirty">3</p>
+                    </div>
+                    <div class="stat-card arrivals">
+                        <h3>Today's Arrivals</h3>
+                        <p class="stat-value" data-testid="dashboard-arrivals">4</p>
+                    </div>
+                    <div class="stat-card departures">
+                        <h3>Today's Departures</h3>
+                        <p class="stat-value" data-testid="dashboard-departures">6</p>
+                    </div>
+                    <div class="stat-card occupancy">
+                        <h3>Occupancy Rate</h3>
+                        <p class="stat-value" data-testid="dashboard-occupancy-rate">75%</p>
+                    </div>
+                </div>
+                
+                <div class="dashboard-section">
+                    <h3>Today's Arrivals</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Room</th>
+                                <th>Guest Name</th>
+                                <th>Check-in Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dashboard-arrivals-body" data-testid="dashboard-arrivals-table">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="dashboard-section">
+                    <h3>Today's Departures</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Room</th>
+                                <th>Guest Name</th>
+                                <th>Check-out Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dashboard-departures-body" data-testid="dashboard-departures-table">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Rooms Tab -->
+            <section id="rooms" class="tab-content" data-testid="tab-content-rooms">
+                <h2>Room Management</h2>
+                <div class="toolbar">
+                    <input type="text" id="room-search" placeholder="Search by room number..." data-testid="room-search-input">
+                    <select id="room-filter" data-testid="room-filter-select">
+                        <option value="all">All Statuses</option>
+                        <option value="occupied">Occupied</option>
+                        <option value="vacant">Vacant</option>
+                        <option value="dirty">Dirty</option>
+                        <option value="maintenance">Maintenance</option>
+                    </select>
+                </div>
+                <table class="data-table rooms-table">
+                    <thead>
+                        <tr>
+                            <th>Room #</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Guest Name</th>
+                            <th>Check-in</th>
+                            <th>Check-out</th>
+                            <th>DND</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rooms-body" data-testid="rooms-table-body">
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Requests Tab -->
+            <section id="requests" class="tab-content" data-testid="tab-content-requests">
+                <h2>Service Requests</h2>
+                <div class="toolbar">
+                    <button class="btn btn-primary" data-testid="new-request-btn" onclick="showNewRequestModal()">+ New Request</button>
+                    <select id="request-filter" data-testid="request-filter-select">
+                        <option value="all">All Requests</option>
+                        <option value="pending">Pending</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="resolved">Resolved</option>
+                    </select>
+                </div>
+                <table class="data-table requests-table">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Room #</th>
+                            <th>Category</th>
+                            <th>Notes</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="requests-body" data-testid="requests-table-body">
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Guest Profiles Tab -->
+            <section id="guests" class="tab-content" data-testid="tab-content-guests">
+                <h2>Guest Profiles</h2>
+                <div class="toolbar">
+                    <input type="text" id="guest-search" placeholder="Search by name or room..." data-testid="guest-search-input">
+                </div>
+                <div id="guest-results" class="guest-grid" data-testid="guest-results">
+                </div>
+            </section>
+        </main>
+
+        <!-- Edit Checkout Modal -->
+        <div id="checkout-modal" class="modal" data-testid="checkout-modal">
+            <div class="modal-content">
+                <h3>Extend Checkout Time</h3>
+                <p id="checkout-room-label"></p>
+                <label for="checkout-time-input">New Checkout Time:</label>
+                <input type="time" id="checkout-time-input" data-testid="checkout-time-input">
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" onclick="closeCheckoutModal()" data-testid="checkout-cancel-btn">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveCheckoutTime()" data-testid="checkout-save-btn">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Request Modal -->
+        <div id="request-modal" class="modal" data-testid="request-modal">
+            <div class="modal-content">
+                <h3>Create New Request</h3>
+                <form id="new-request-form" onsubmit="submitNewRequest(event)">
+                    <label for="request-room">Room Number:</label>
+                    <select id="request-room" data-testid="request-room-select" required>
+                    </select>
+                    
+                    <label for="request-category">Category:</label>
+                    <select id="request-category" data-testid="request-category-select" required>
+                        <option value="housekeeping">Housekeeping</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="concierge">Concierge</option>
+                    </select>
+                    
+                    <label for="request-priority">Priority:</label>
+                    <select id="request-priority" data-testid="request-priority-select" required>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                        <option value="urgent">Urgent</option>
+                    </select>
+                    
+                    <label for="request-notes">Notes:</label>
+                    <textarea id="request-notes" data-testid="request-notes-input" rows="3" required></textarea>
+                    
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeRequestModal()" data-testid="request-cancel-btn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" data-testid="request-submit-btn">Create Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Add Note Modal -->
+        <div id="note-modal" class="modal" data-testid="note-modal">
+            <div class="modal-content">
+                <h3>Add Guest Note</h3>
+                <p id="note-guest-label"></p>
+                <label for="note-input">Note:</label>
+                <textarea id="note-input" data-testid="note-input" rows="3"></textarea>
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" onclick="closeNoteModal()" data-testid="note-cancel-btn">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveNote()" data-testid="note-save-btn">Save Note</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

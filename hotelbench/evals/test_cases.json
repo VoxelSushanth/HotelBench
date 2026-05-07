@@ -1,0 +1,158 @@
+[
+    {
+        "id": 1,
+        "task": "Extend checkout for room 204 to 2pm",
+        "expected_action_type": "extend_checkout",
+        "expected_room": "204",
+        "expected_outcome": "checkout_time_updated",
+        "difficulty": "easy"
+    },
+    {
+        "id": 2,
+        "task": "Mark room 108 as Do Not Disturb",
+        "expected_action_type": "toggle_dnd",
+        "expected_room": "108",
+        "expected_outcome": "dnd_enabled",
+        "difficulty": "easy"
+    },
+    {
+        "id": 3,
+        "task": "Create a housekeeping request for room 312 — extra towels, high priority",
+        "expected_action_type": "create_housekeeping_request",
+        "expected_room": "312",
+        "expected_outcome": "request_created",
+        "difficulty": "medium"
+    },
+    {
+        "id": 4,
+        "task": "What is the checkout time for room 205?",
+        "expected_action_type": "query",
+        "expected_room": "205",
+        "expected_outcome": "information_retrieved",
+        "difficulty": "easy"
+    },
+    {
+        "id": 5,
+        "task": "Update request #REQ-007 status to Resolved",
+        "expected_action_type": "update_request_status",
+        "expected_request_id": "REQ-007",
+        "expected_outcome": "status_updated_to_resolved",
+        "difficulty": "easy"
+    },
+    {
+        "id": 6,
+        "task": "Add a note to room 101 guest profile: VIP, prefers quiet room",
+        "expected_action_type": "add_note",
+        "expected_room": "101",
+        "expected_outcome": "note_added",
+        "difficulty": "medium"
+    },
+    {
+        "id": 7,
+        "task": "Which rooms are currently dirty?",
+        "expected_action_type": "query",
+        "expected_outcome": "information_retrieved",
+        "difficulty": "easy"
+    },
+    {
+        "id": 8,
+        "task": "Create a maintenance request for room 416 — broken AC, urgent",
+        "expected_action_type": "create_maintenance_request",
+        "expected_room": "416",
+        "expected_outcome": "request_created",
+        "difficulty": "medium"
+    },
+    {
+        "id": 9,
+        "task": "Extend checkout for Sarah Johnson to 4pm",
+        "expected_action_type": "extend_checkout",
+        "expected_guest_name": "Sarah Johnson",
+        "expected_outcome": "checkout_time_updated",
+        "difficulty": "hard"
+    },
+    {
+        "id": 10,
+        "task": "Mark room 220 as clean and available",
+        "expected_action_type": "mark_clean",
+        "expected_room": "220",
+        "expected_outcome": "room_status_vacant",
+        "difficulty": "easy"
+    },
+    {
+        "id": 11,
+        "task": "How many guests are checking out today?",
+        "expected_action_type": "query",
+        "expected_outcome": "information_retrieved",
+        "difficulty": "medium"
+    },
+    {
+        "id": 12,
+        "task": "Create a concierge request for room 303 — restaurant reservation at 7pm",
+        "expected_action_type": "create_concierge_request",
+        "expected_room": "303",
+        "expected_outcome": "request_created",
+        "difficulty": "medium"
+    },
+    {
+        "id": 13,
+        "task": "What room is John Smith in?",
+        "expected_action_type": "lookup",
+        "expected_guest_name": "John Smith",
+        "expected_outcome": "information_retrieved",
+        "difficulty": "medium"
+    },
+    {
+        "id": 14,
+        "task": "Cancel the housekeeping request for room 108",
+        "expected_action_type": "delete_request",
+        "expected_room": "108",
+        "expected_outcome": "request_deleted",
+        "difficulty": "medium"
+    },
+    {
+        "id": 15,
+        "task": "Extend all checkouts on floor 2 by one hour",
+        "expected_action_type": "extend_checkout",
+        "expected_floor": "2",
+        "expected_outcome": "multiple_checkouts_updated",
+        "difficulty": "hard"
+    },
+    {
+        "id": 16,
+        "task": "Update room 502 status to maintenance",
+        "expected_action_type": "update_room_status",
+        "expected_room": "502",
+        "expected_outcome": "status_maintenance",
+        "difficulty": "medium"
+    },
+    {
+        "id": 17,
+        "task": "Find all high-priority pending requests",
+        "expected_action_type": "query",
+        "expected_outcome": "information_retrieved",
+        "difficulty": "medium"
+    },
+    {
+        "id": 18,
+        "task": "Add a note that guest in room 401 has a 6am flight",
+        "expected_action_type": "add_note",
+        "expected_room": "401",
+        "expected_outcome": "note_added",
+        "difficulty": "medium"
+    },
+    {
+        "id": 19,
+        "task": "What is the current occupancy rate?",
+        "expected_action_type": "query",
+        "expected_outcome": "information_retrieved",
+        "difficulty": "easy"
+    },
+    {
+        "id": 20,
+        "task": "Mark rooms 101, 102, 103 as clean",
+        "expected_action_type": "mark_clean",
+        "expected_rooms": ["101", "102", "103"],
+        "expected_outcome": "multiple_rooms_cleaned",
+        "difficulty": "hard"
+    }
+]
